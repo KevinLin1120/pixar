@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>皮克斯的異想世界</title>
+  <link rel="icon" href="nemo/img/Icon.png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+  <style>
+    h1 {
+      text-align: center;
+      background-color: darkblue;
+      color: rgb(174, 221, 253);
+    }
+    .box{
+    background-color: rgb(174, 221, 253);
+    }
+    #title{
+    background-color: aliceblue;
+    color: black;
+    }
+    .nav{
+    background-color: aliceblue;
+    display: flex;
+    top: 0;
+    position: sticky;
+    z-index: 999;
+    padding-bottom: 0px;
+    }
+    .rwd{
+      font-size:large
+    }
+    @media (min-width: 600px) and (max-width: 1200px) {
+      .rwd {
+      font-size: x-large;
+      }
+    }
+    @media (min-width: 1200px) {
+      .rwd {
+        font-size: xx-large;
+      }
+    }
+    .title{
+    padding-top: 1%;
+    width: 94%;
+    text-align: center;
+    }
+    .title h1 a{
+    text-decoration: none;
+    font-weight: bold;
+    color:darkblue;
+    }
+    .title h1 a:visited{
+    color: darkblue;
+    font-weight: bold;
+    }
+    #list{
+    margin: 50% 50% 0%;
+    }
+    * .nav ul li ul li{
+    padding-top: 4.9%;
+    padding-left: 5px;
+    height: 40px;
+    width: 125px;
+    }
+    .nav ul{
+    padding-left: 0px;
+    display: inline;
+    }
+    .nav ul li{
+    list-style-type: none;
+    position: relative;
+    float: left;
+    }
+    .nav ul a{
+    display: block;
+    text-decoration: none;
+    font-weight: bold;
+    }
+    .nav ul li ul{
+    position: absolute;
+    visibility: hidden;
+    margin: 0% 50%;
+    }
+    .nav ul li:hover ul{
+    visibility: visible;
+    }
+    .nav ul li:hover ul li ul{
+    visibility: hidden;
+    }
+    .nav ul li ul li ul{
+    position: absolute;
+    }
+    .nav ul li ul li:hover ul{
+    margin-top: -30px;
+    margin-left: 120px;
+    visibility: visible;
+    }
+    * .nav ul li ul li{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #6f6f6f;
+    font-weight: bold;
+    }
+    * .nav ul li ul li:hover{
+    background-color: cornsilk;
+    }
+    a{
+    color: #6f6f6f;
+    }
+    a:visited {
+    color: #6f6f6f;
+    }
+    .nav ul li ul{
+    background-color: #ffffffe8;
+    }
+    .picture{
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    }
+
+    .header {
+    background-color: white;
+    }
+
+    .music {
+    text-align: right;
+    }
+
+    audio {
+    width: 300px;
+    height: 20px;
+    }
+
+    .picture {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    }
+
+    .plot {   
+    height: 50%;
+    font-size: x-large;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 50px;
+    margin-left: 50px;
+    margin-right: 50px;
+    }
+
+    .character{
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 50px;
+    margin-left: 50px;
+    margin-right: 50px;
+    }
+
+    .card-text{
+    text-align: center;
+    }
+
+    .card-img-top {
+    cursor: pointer;
+    opacity: 1;
+    }
+
+    .card-img-top:hover {
+    max-width: 100%;
+    opacity: 0.8;
+    }
+
+    .c1-img-top{
+    cursor: pointer;
+    opacity: 1;
+    width: 100%;
+    height: 87%;
+    object-fit: cover;
+    }
+    .c1-img-top:hover{
+    max-width: 100%;
+    opacity: 0.8;
+
+    }
+    .card-text{
+    text-align: center;
+    }
+    .flex2{
+    display: flex;
+    align-items: center;
+    width: 95%;
+    height: 45vw;
+    padding-left: 5%;
+    }
+    .left{
+    width: 100%;
+    height: 100%;
+    object-fit: cover
+    }
+    .right{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    }
+    .leftword{
+    float: left;
+    }
+    .award{
+    text-align: center;
+    }
+    .video{
+    position: relative;
+    width: 80%;
+    height: 0;
+    padding-bottom: 45%;
+    margin-left:10%;
+    margin-bottom: 5%;
+    }
+    .iframe{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    }
+    #myBtn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 99;
+    border: none;
+    cursor: pointer;
+    padding: 1px;
+    border-radius: 50%;
+    }
+
+    #myBtn:hover {
+    background-color: grey;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="nav">
+      <ul>
+        <li>
+          <img id="list" src="nemo/img/list.png" alt="" width="30px" height="30px">
+          <ul>
+            <li><a href="../pixar/index.html">首頁</a></li>
+            <li><a href="../About/about.html">關於皮克斯</a></li>
+            <li>
+              <a href="#">動畫介紹</a> 
+              <ul>
+                <li><a href="../monster/monster.html">怪獸電力公司</a></li>
+                <li><a href="../up/up.html">天外奇蹟</a></li>
+                <li><a href="../Cars/cars.html">汽車總動員</a></li>
+                <li><a href="../fin/nemo.html">海底總動員</a></li>
+                <li><a href="rat.html">料理鼠王</a></li>
+                <li><a href="../Toy story/toy.html">玩具總動員</a></li>
+                <li><a href="../腦筋急轉彎/Inside out.html">腦筋急轉彎</a></li>
+                <li><a href="../Walle/walle.html">瓦力</a></li>
+                <li><a href="../超人特攻隊/The Incredibles.html">超人特攻隊</a></li>
+              </ul>
+            </li>
+              <li><a href="../pixar/form.html">問卷調查</a></li>
+          </ul>
+      </li>
+      </ul>
+        <div class="justify-content-center title">
+            <h1 id="title"><a href="../pixar/index.html">皮克斯的異想世界</a></h1>
+            <div class="music">
+              <audio id="bgm" autoplay="autoplay" src="nemo/nemo.mp3" controls loop ></audio>
+            </div>
+        </div> 
+    </div>
+
+    <img src="nemo/img/picture.jpg" class="picture" alt="">
+            <h1>劇情大綱</h1>
+        <div class="plot">
+            <p class="rwd">故事背景發生在汪洋大海，在美麗的海葵海底花園中，住著一對相依為命的小丑魚父子，自從魚媽媽意外喪生後，魚爸爸馬林就承擔起父兼母職的工作，盡力撫養他的小兒子尼莫。由於大海中暗藏種種的危機，馬林總是告訴尼莫不要亂跑，應該處處小心才能確保安全，但不知天高地厚的小尼莫，一心想擺脫種種限制，去游遍海洋追尋冒險。有一天，被好奇心驅使的尼莫再度離開父親的視線，結果居然被一位潛水夫給逮住了！因此被帶到雪梨一家牙醫診所的水族箱中飼養。心急如焚的馬林為了尋回尼莫不畏艱難，決定展開他的千里尋子之旅，在途中遇到一隻健忘的藍倒吊魚多利願意幫忙與他同行，後來還遇到三條希望吃素的鯊魚：布魯斯、安安以及小沈，也遭遇各式各樣的危機，他們必須跟上東澳洋流，並且還要想辦法超越大海上岸，才能到雪梨街頭找到尼莫。</p>
+        </div>
+        <h1>角色介紹</h1>
+  <div class="character">
+        <div class="col-md card-group">
+          <div class="col-md">
+            <div class="card" style="width: 100%; height: 100%;">
+              <img src="nemo/img/Marlin.jpg" class="c1-img-top" data-toggle="modal" data-target="#card04" alt="...">
+              <div class="card-body">
+                <p class="card-text">馬林</p>
+              </div>
+            </div>
+            <div class="modal" id="card04" data-backdrop="static" tabindex="-1">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">馬林</h5>
+                  </div>
+                  <div class="modal-body">
+                    <p>尼莫的爸爸，為了尋找被捉的兒子，決定克服萬難展開冒險。</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="card" style="width: 100%; height: 100%;">
+              <img src="nemo/img/Dory.jpg" class="c1-img-top" data-toggle="modal" data-target="#card05" alt="...">
+              <div class="card-body">
+                <p class="card-text">多莉</p>
+              </div>
+          </div>
+          <div class="modal" id="card05" data-backdrop="static" tabindex="-1">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">多莉</h5>
+                  </div>
+                  <div class="modal-body">
+                    <p>她是一隻藍倒吊，但是腦筋有點健忘，常常忘東忘西。</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="card" style="width: 100%; height: 100%;">
+              <img src="nemo/img/nemo.jpg" class="c1-img-top" data-toggle="modal" data-target="#card06" alt="...">
+              <div class="card-body">
+                <p class="card-text">尼莫</p>
+              </div>
+          </div>
+          <div class="modal" id="card06" data-backdrop="static" tabindex="-1">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">尼莫</h5>
+                  </div>
+                  <div class="modal-body">
+                    <p>生性愛冒險的小丑魚，但後來卻被人類抓走，帶到遙遠的地方。</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md card-group">
+          <div class="col-md">
+            <div class="card" style="width: 100%; height: 100%;">
+              <img src="nemo/img/Turtles.jpg" class="c1-img-top" data-toggle="modal" data-target="#card04" alt="...">
+              <div class="card-body">
+                <p class="card-text">龜龜和小吉</p>
+              </div>
+            </div>
+            <div class="modal" id="card04" data-backdrop="static" tabindex="-1">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">龜龜和小吉</h5>
+                  </div>
+                  <div class="modal-body">
+                    <p>他們是綠蠵龜，乘著洋流航遍大海之中。</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="card" style="width: 100%; height: 100%;">
+              <img src="nemo/img/Gill.jpg" class="c1-img-top" data-toggle="modal" data-target="#card05" alt="...">
+              <div class="card-body">
+                <p class="card-text">吉哥</p>
+              </div>
+          </div>
+          <div class="modal" id="card05" data-backdrop="static" tabindex="-1">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">吉哥</h5>
+                  </div>
+                  <div class="modal-body">
+                    <p>他是一隻角蝶魚，自小被捉來養在水族箱中，但心中仍潛藏著奔向自由的慾望。</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="card" style="width: 100%; height: 100%;">
+              <img src="nemo/img/Nigel.jpg" class="c1-img-top" data-toggle="modal" data-target="#card06" alt="...">
+              <div class="card-body">
+                <p class="card-text">祖哥</p>
+              </div>
+          </div>
+          <div class="modal" id="card06" data-backdrop="static" tabindex="-1">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">祖哥</h5>
+                  </div>
+                  <div class="modal-body">
+                    <p>他是一隻鵜鵠，居住在澳洲雪梨港口一帶，常飛到牙醫診所的窗口。</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md card-group">
+            <div class="col-md">
+              <div class="card" style="width: 100%; height: 100%;">
+                <img src="nemo/img/Chum.jpg" class="c1-img-top" data-toggle="modal" data-target="#card04" alt="...">
+                <div class="card-body">
+                  <p class="card-text">小沈</p>
+                </div>
+              </div>
+              <div class="modal" id="card04" data-backdrop="static" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">小沈</h5>
+                    </div>
+                    <div class="modal-body">
+                      <p>他是一隻鮫鯊，個性有一點過動，一刻都靜不下來。</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md">
+              <div class="card" style="width: 100%; height: 100%;">
+                <img src="nemo/img/Bruce.jpg" class="c1-img-top" data-toggle="modal" data-target="#card05" alt="...">
+                <div class="card-body">
+                  <p class="card-text">布魯斯</p>
+                </div>
+            </div>
+            <div class="modal" id="card05" data-backdrop="static" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">布魯斯</h5>
+                    </div>
+                    <div class="modal-body">
+                      <p>他是一隻大白鯊，龐大的體型和利牙，讓他成為鯊魚一族的領導者。</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md">
+              <div class="card" style="width: 100%; height: 100%;">
+                <img src="nemo/img/Anchor.jpg" class="c1-img-top" data-toggle="modal" data-target="#card06" alt="...">
+                <div class="card-body">
+                  <p class="card-text">安安</p>
+                </div>
+            </div>
+            <div class="modal" id="card06" data-backdrop="static" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">安安</h5>
+                    </div>
+                    <div class="modal-body">
+                      <p>他是一隻雙髻鯊，性格愛嘲諷，十分討厭海豚。</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    <h1>名言佳句</h1>
+    <div class="card-deck">
+        <div class="card">
+        <img src="nemo/img/talkdory.jpg" alt="Card image cap">
+        <div class="card-body">
+                <h5 class="card-title">多莉:當你的生活遇到瓶頸時，你知道該怎麼做嗎？繼續向前游就對了！</h5>
+                <p class="card-text">Dory:When life gets you down do you wanna know what you’ve gotta do? Just keep swimming!</p>
+                <p class="card-text"><small class="text-muted"></small></p>
+        </div>
+        </div>
+        <div class="card">
+            <img src="nemo/img/talkhank.jpg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">漢克:我們可沒事先計劃，因為最好的事情都是自然發生的。</h5>
+                <p class="card-text">Hank:Well, I don't think we did. And that's because the best things happen by chance.</p>
+                <p class="card-text"><small class="text-muted"></small></p>
+            </div>
+        </div>
+    </div>
+    <h1>彩蛋</h1>
+    <div class="flex2">
+      <div style="width: 48%; height: 96%; background-color:red;">
+          <img src="nemo/img/secret.jpg" alt="Avatar" class="left">
+      </div>
+
+       <div style="text-align: center; width: 48%; margin-left: 4%;">   
+          <h2 style="padding: 15px;" class="align-items-center rwd">
+            電影結束後我們常常不會看完最後的工作人員表單，這個例子告訴我們，你可能因此錯過有趣的彩蛋！《怪獸電力公司》的大眼怪麥可華斯基就偷偷出現在《海底總動員》最後的名單中。
+            <!-- 《怪獸電力公司》的大眼怪麥可華斯基就偷偷出現在《海底總動員》最後的名單中。 -->
+         </h2>
+      </div>
+    </div>
+    <div class="award">
+      <h1>獎項</h1>
+      2004年奧斯卡金像獎最佳動畫片<br>
+      2004年廣播影評人協會獎最佳動畫片獎<br>
+      2003年美國電影學會獎年度最佳影片<br>
+      2004年兒童票選獎最受歡迎電影
+    </div>
+        <h1>預告片</h1>
+    <div class="video"> <!--changes-->
+        <iframe class="iframe" src="https://www.youtube.com/embed/K1_sNKKPgrc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+        </iframe>
+    </div>
+  </div>
+
+
+    <button onclick="topFunction()" id="myBtn" title="Go to top"><img src="nemo/img/Icon48.png" alt=""></button>
+    <script>
+        var mybutton = document.getElementById("myBtn");
+        window.onscroll = function() {scrollFunction()};
+        function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            mybutton.style.display = "block";
+        } else {
+            mybutton.style.display = "block";
+        }
+        }
+        function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+        }
+    </script>
+    <script>
+        myVid=document.getElementById("bgm");
+        myVid.volume=0.2;
+    </script>
+</body>
+</html>

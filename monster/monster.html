@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+    integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+    integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
+    crossorigin="anonymous"></script>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="Icon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>怪獸電力公司</title>
+    <style>
+
+        *{
+                margin: 0;
+            }
+            .nav{
+                
+                display: flex;
+                top: 0;
+                position: sticky;
+                z-index: 999;
+              
+                background-color: rgb(147, 163, 247);
+                
+            }
+            
+            .title
+            {
+                padding-top: 1%;
+                width: 96%; 
+                text-align: center;
+                background-color: rgb(147, 163, 247);
+            }
+            .title h1 a
+            {
+        text-decoration: none;
+        font-weight: bold;
+       
+        color:rgb(255, 235, 235);
+      }
+      .title h1 a:visited
+      {
+        color: rgb(33, 33, 62);
+        font-weight: bold;
+      }
+            .music{
+                width: 5%;
+            }
+            #list{
+                margin: 50% 50% 0%;
+           
+                background-color: rgb(147, 163, 247);
+            }
+            * .nav ul li ul li{
+                padding-top: 4.9%; 
+                padding-left: 5px;
+                height: 40px;
+                width: 125px;
+                
+            }
+            .nav ul{
+                padding-left: 0px;
+                display: inline;
+               
+            }
+            .nav ul li{
+                list-style-type: none;
+                position: relative;
+                float: left;
+            }
+            .nav ul a{
+                display: block;
+                text-decoration: none;
+                font-weight: bold;
+            }
+            .nav ul li ul{
+                position: absolute;
+                visibility: hidden;
+                margin: 0% 50%;
+            }
+            .nav ul li:hover ul{
+                visibility: visible;
+            }
+            .nav ul li:hover ul li ul{
+                visibility: hidden;
+            }
+            .nav ul li ul li ul{
+                position: absolute;
+            }
+            .nav ul li ul li:hover ul{
+                margin-top: -30px;
+                margin-left: 120px;
+                visibility: visible;
+            }
+            * .nav ul li ul li{
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                color: #6f6f6f;
+                font-weight: bold;
+            }
+            * .nav ul li ul li:hover{
+                background-color: cornsilk;
+            }
+            a{
+                color: #6f6f6f;
+            }
+            a:visited {
+                color: #6f6f6f;
+            }
+            .nav ul li ul{ 
+                background-color: #ffffffe8;
+            }
+            
+            a{
+                color: #6f6f6f;
+            }
+            a:visited {
+                color: #6f6f6f;
+            }
+            .nav ul li ul{
+                background-color: #ffffffe8;
+            }
+
+        .box 
+        {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+
+        .header {
+            background-color: #fafbfd;
+          
+            padding: 10px;
+            margin: auto;
+             
+        }
+
+        
+
+        .article {
+            background-color: #f6faf9;
+            
+            
+        }
+
+        .picture {
+          width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        .plot {
+          background-color: rgb(217, 225, 255);
+            height: 50%;
+            text-align: center;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+        .character{
+            padding-top: 20px;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-bottom: 50px;
+            margin-left: 50px;
+            margin-right: 50px;
+        }
+
+        .C1-img-top
+        {
+                opacity: 1;
+                width: 100%;
+                height: 85%;
+                object-fit: cover;
+            }
+
+        .C1-img-top:hover
+        {
+            max-width: 100%;
+            opacity: 0.8;
+
+        }
+
+        .image
+         {
+            opacity: 1;
+            display: block;
+            width: 100%;
+            height: auto;
+            transition: .5s ease;
+            backface-visibility: hidden;
+        }
+
+        .iframe 
+        {
+            display: block;
+            margin: 0 auto;
+        }
+
+        .middle 
+        {
+            transition: .5s ease;
+            opacity: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+       .vedio{
+        position: relative;
+                width: 80%;
+                height: 0;
+                padding-bottom: 45%;
+                margin-left:10%;
+                color: rgb(234, 227, 255);
+       }
+
+        .text 
+        {
+            color: rgb(234, 227, 255);
+            font-size: 15px;
+          
+        }
+
+        .sentence 
+        {
+            background-color: rgb(234, 227, 255);
+            text-align: center;
+            height:300px;
+            height:100%;
+        }
+
+
+        .surprise {
+            background-color: rgb(234, 227, 255);
+            text-align: center;
+        }
+        .title2{
+          background-color: rgb(132, 142, 255);
+            text-align: center;
+        }
+        .flex2{
+                display: flex;
+                align-items: center;
+                width: 95%;
+                height: 45vw;
+                padding-left: 5%;
+            }
+            .left{
+                width: 100%;
+                height: 100%;
+                object-fit: cover
+            }
+            .right{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+        .award {
+            background-color: rgb(208, 212, 255);
+            text-align: center;
+            
+            height: 100%;
+        }
+
+
+        .footer {
+          color: rgb(208, 212, 255);
+          
+            text-align: center;
+        }
+        
+            .video{
+              position: relative;
+                width: 80%;
+                height: 0;
+                padding-bottom: 45%;
+                margin-left:10%;
+                margin-bottom: 5%;
+            }
+            .iframe{
+                position: absolute;
+                width: 100%;
+                height: 100%;
+            }
+            
+
+        #myBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 99;
+            border: none;
+            cursor: pointer;
+            padding: 1px;
+            border-radius: 50%;
+        }
+
+        #myBtn:hover {
+            background-color: grey;
+        }
+
+
+      
+      
+    </style>
+</head>
+
+<body>
+
+    <div class="box" >
+
+       
+        <div class="nav">
+            <ul>
+                <li>
+                    <img id="list" src="list.png" alt="" width="30px" height="30px">
+                    <ul>
+                      <li><a href="../pixar/index.html">首頁</a></li> 
+                      <li><a href="../About/about.html">關於皮克斯</a></li>
+                      <li>
+                          <a href="#">動畫介紹</a> 
+                          <ul>
+                              <li><a href="../monster/monster.html">怪獸電力公司</a></li>
+                              <li><a href="../up/up.html">天外奇蹟</a></li>
+                              <li><a href="../Cars/cars.html">汽車總動員</a></li>
+                              <li><a href="../fin/nemo.html">海底總動員</a></li>
+                              <li><a href="../fin/rat.html">料理鼠王</a></li>
+                              <li><a href="../Toy story/toy.html">玩具總動員</a></li>
+                              <li><a href="../腦筋急轉彎/Inside out.html">腦筋急轉彎</a></li>
+                              <li><a href="../Walle/walle.html">瓦力</a></li>
+                              <li><a href="../超人特攻隊/The Incredibles.html">超人特攻隊</a></li>
+                          </ul>
+                            
+                        </li>
+                        <li><a href="../pixar/form.html">問卷調查</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="justify-content-center title"><h1 id="title"><a href="../pixar/index.html">皮克斯的異想世界</a></h1></a></div><!--大改-->
+        </div>
+
+                <div class="music">
+                    <audio id="bgm" autoplay="autoplay" src="If I Didnt Have You (Billy Crystal John Goodman) - Monsters, Inc OST.mp3" controls loop></audio>
+                </div>
+          
+        <div class="article">
+            <div class="picture">
+                <img src="all.jpg" style="width:100%; text-align: center;border-style:hidden;">
+              </div>
+              
+           
+            <div class="plot">
+               
+                  <div class="title2"><h1>劇情大綱</h1></div>
+                    <h4><br>*怪獸電力公司的發電來源竟然是<span style="font-weight:bold; background: rgb(159, 248, 95);">孩子的尖叫聲</span>*
+                    <br>*貪得無厭的盡頭會是甚麼?*
+                    </h4>
+                    <br>毛怪和大眼仔是怪獸電力公司的員工，
+                    <br>他們一如往常的在工廠裡工作，某天下班，毛怪發現了一扇門。
+                    <br>毛怪在好奇之下打開了這扇門，卻意外讓一個小女孩－阿布闖進怪獸世界!
+                    <br>可怕的是，怪獸世界深信著人類小孩身懷劇毒，對怪獸們有生命的威脅。
+                    <br>這個闖進來的阿布，在怪獸世界中造成了騷動。
+                    <br>毛怪決定要把阿布送回她的世界，因此展開了他們的冒險旅程......
+                    <span style="color:rgb(238, 20, 20);">
+                    <br>★ReelViews網站線上影評人詹姆斯·伯拉迪尼給予影片三星半的評價★ 
+                    <br>★影評人羅傑·埃伯特給予本片三星的評價★
+                    <br>★爛番茄8分★
+                    <br>★Metacritic 78分★
+                </span>
+                    
+            </div>
+            </div>
+            <br>
+
+          <div class="row">
+                    <div class="col-md card-group">
+                      <div class="col-md">
+                        <div class="card" id=C1 style="width: 100%; height: 100%;">
+                          <img src="Sulley.jpg" class="C1-img-top" data-toggle="modal" data-target="#card01" alt="...">
+                          <div class="card-body">
+                            <p class="card-text">詹姆斯·蘇利文</p>
+                          </div>
+                        </div>
+                        <div class="modal" id="card01"  tabindex="-1">
+                          <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title">毛怪</h5>
+                      
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                <p>毛怪是一隻體型龐大並長滿藍色長毛，頭上有兩個尖角，身上有紫色斑塊，心地善良友好的怪獸。
+                                    雖然他在工作上非常擅長（嚇唬孩子），但本質上卻很善良和體貼。毛怪的個性樂觀而放鬆，
+                                    影片一開始就介紹他是怪獸電力公司連續多個月「業績」最好的「驚嚇專員」。
+                                </p>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                       
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md">
+                        <div class="card" id=C1 style="width: 100%;height: 100%;">
+                          <img src="Mike.jpg" class="C1-img-top" data-toggle="modal" data-target="#card02" alt="...">
+                          <div class="card-body">
+                            <p class="card-text">麥克·華斯基</p>
+                          </div>
+                        </div>
+                        <div class="modal" id="card02" data-backdrop="static" tabindex="-1">
+                            <div class="modal-dialog modal-dialog-centered">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title">大眼仔</h5>
+
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                  <p>毛怪的助手兼最好的朋友。性格樂觀積極的他很容易滿足，例如在廣告和雜誌封面上，
+                                      雖然自己的臉完全被擋住，但他所看到想到的只是自己上了電視或是上了雜誌封面並對此感到激動不已。
+                                      和西莉亞·美正處曖昧約會階段。
+                                 </p>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+                      <div class="col-md">
+                        <div class="card" id=C1 style="width: 100%;height: 100%;">
+                          <img src="Boo.jpg" class="C1-img-top" data-toggle="modal" data-target="#card03" alt="...">
+                          <div class="card-body">
+                            <p class="card-text">阿布</p>
+                          </div>
+                        </div>
+                        <div class="modal" id="card03" data-backdrop="static" tabindex="-1">
+                            <div class="modal-dialog modal-dialog-centered">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title">阿布</h5>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                  <p>布是個兩歲大的人類小女孩，除了晚上經常從衣櫃裡鑽出來嚇她的蘭德爾外，不害怕任何怪物。稱毛怪為「Kitty」。
+                                  </p>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                                  
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <br>
+                 
+                  <div class="row">
+                    <div class="col-md card-group">
+                      <div class="col-md">
+                        <div class="card" id=C1 style="width: 100%; height: 100%;">
+                          <img src="Randall.jpg" class="C1-img-top" data-toggle="modal" data-target="#card04" alt="...">
+                          <div class="card-body">
+                            <p class="card-text">藍道·寶基</p>
+                          </div>
+                        </div>
+                        <div class="modal" id="card04" data-backdrop="static" tabindex="-1">
+                          <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title">藍道</h5>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                <p>藍道像變色龍一樣可以根據環境改變顏色，達到隱身的效果，
+                                    他是怪獸電力公司業績僅次於毛怪的驚叫專員，為此半夜私自降下門衝業績，
+                                    而導致門內的阿布意外來到怪獸世界。
+  
+                                </p>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                               
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md">
+                        <div class="card" id=C1 style="width: 100%;height: 100%;">
+                          <img src="Celia.jpg" class="C1-img-top" data-toggle="modal" data-target="#card05" alt="...">
+                          <div class="card-body">
+                            <p class="card-text">西莉亞·美</p>
+                          </div>
+                        </div>
+                        <div class="modal" id="card05" data-backdrop="static" tabindex="-1">
+                            <div class="modal-dialog modal-dialog-centered">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title">西莉亞·美</h5>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                  <p>西莉亞有梅杜莎般的外形，一顆眼睛，頭髮是很多條蛇，類似觸手的腳。
+                                      她是怪獸電力公司的電話接線員，最後也成為大眼仔的女友。
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                                  
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+                      <div class="col-md">
+                        <div class="card" id=C1 style="width: 100%;height: 100%;">
+                          <img src="Waternoose.jpg" class="C1-img-top" data-toggle="modal" data-target="#card06" alt="...">
+                          <div class="card-body">
+                            <p class="card-text">亨利·荷特路</p>
+                          </div>
+                        </div>
+                        <div class="modal" id="card06" data-backdrop="static" tabindex="-1">
+                            <div class="modal-dialog modal-dialog-centered">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title">亨利·荷特路</h5>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                  <p>怪獸電力公司總裁，有五隻眼睛，腳則與螃蟹類似，他的父親和祖父也都曾擔任這一職務。
+                                      他一開始有些像是毛怪的導師，相信後者是最優秀的尖叫專員，
+                                      但為了挽救公司的業務不擇手段和藍道合作最終被捕。
+                                 </p>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                                  
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                   <br>
+                  <div class="row">
+                    <div class="col-md card-group">
+                      <div class="col-md">
+                        <div class="card" id=C1 style="width: 100%; height: 100%;">
+                          <img src="Roz.jpg" class="C1-img-top" data-toggle="modal" data-target="#card07" alt="...">
+                          <div class="card-body">
+                            <p class="card-text">羅茲</p>
+                          </div>
+                        </div>
+                        <div class="modal" id="card07" data-backdrop="static" tabindex="-1">
+                          <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title">羅茲</h5>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                <p>羅茲表面上是怪獸電力公司的書記，實際上卻是兒童探測局的第一號特工兼主管，
+                                    在這裡充當臥底已有兩年半。她的外形類似於鼻涕蟲。
+  
+                                </p>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                               
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <br>
+                      <div class="col-md">
+                        <div class="card" id=C1 style="width: 100%;height: 100%;">
+                          <img src="Yeti.jpg" class="C1-img-top" data-toggle="modal" data-target="#card08" alt="...">
+                          <div class="card-body">
+                            <p class="card-text">雪人</p>
+                          </div>
+                        </div>
+                        <div class="modal" id="card08" data-backdrop="static" tabindex="-1">
+                            <div class="modal-dialog modal-dialog-centered">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title">雪人</h5>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                  <p>前怪獸電力公司雇員，外型似大腳雪怪，被流放到喜馬拉雅山脈。
+                                  </p>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                                  
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+                      <div class="col-md">
+                        <div class="card" id=C1 style="width: 100%;height: 100%;">
+                          <img src="CDA.jpg" class="C1-img-top" data-toggle="modal" data-target="#card09" alt="...">
+                          <div class="card-body">
+                            <p class="card-text">CDA</p>
+                          </div>
+                        </div>
+                        <div class="modal" id="card09" data-backdrop="static" tabindex="-1">
+                            <div class="modal-dialog modal-dialog-centered">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title">Child Detection Agency</h5>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                  <p>劇中對怪獸來說，人類小孩身上攜帶大量致命病毒，而CDA的存在，
+                                      就是用來拯救怪獸世界，消滅人類物品，及消毒被汙染的怪獸。
+                                  </p>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                                  
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                
+            <div class="sentence">
+                <p>
+                <div class="title2">
+                    <p>
+                    <h1>名言佳句</h1>
+                    </p>
+
+
+                </div>
+                <div class="card-deck">
+                    <div class="card">
+                      <img class="card-img-top" src="bluegreen.png" alt="Card image cap">
+                      <div class="card-body">
+                        <h5 class="card-title"> 我們是一夥的，沒有甚麼比我們的友誼更重要
+    
+                            </h5>
+                        <p class="card-text">You and I are a team. Nothing is more important than our friendship.</p>
+                        <p class="card-text"><small class="text-muted">毛怪和大眼仔的友誼是從大學就開始的!
+                        </small></p>
+                      </div>
+                    </div>
+                    <div class="card">
+                      <img class="card-img-top" src="laught.jpg" alt="Card image cap">
+                      <div class="card-body">
+                        <h5 class="card-title">一旦你為他取了名字，你就會對她產生感情</h5>
+                        <p class="card-text">Once you name it, you start getting attached to it.</p>
+                        <p class="card-text"><small class="text-muted">阿布的本名其實叫瑪莉</small></p>
+                      </div>
+                    </div>
+                    <div class="card">
+                      <img class="card-img-top" src="go.webp" alt="Card image cap">
+                      <div class="card-body">
+                        <h5 class="card-title">「再見了阿Boo，大貓咪要走了。」</h5>
+                        <p class="card-text">“Good-bye, Boo. Kitty has to go.”</p>
+                        <p class="card-text"><small class="text-muted">電影的最後，大眼仔修好了阿布破掉的門，毛怪和阿布又能見面了!</small></p>
+                      </div>
+                    </div>
+                  </div>
+                  </p>
+                  </div>
+                
+                    <div class="surprise">
+                        <p>
+
+                        <div class="title2"><h1>彩蛋</h1></div>
+                        </p>
+
+                        <div class="flex2">
+                          <div style="width: 80%; height: 60%; background-color:red;">
+                              <img src="sur1.jpg" alt="Avatar" class="left">
+                          </div>
+                          
+                           <div class="rwd";style="text-align: left ; width: 40%; margin-left: 4%;">   
+                              <h4 style="padding: 2px;" class="align-items-center">
+                                <div style="border-width: 3px; border-style:solid ; 
+                                width: 150px; height: 42px; border-color: rgba(85, 127, 255, 0.421); 
+                                padding: 3px; text-align: center;"> 彩蛋1:</div>
+                               <br>在 " 怪獸電力公司中 "，毛怪的沙發特別開了一個洞，
+                               讓他在坐下時不會擠到尾巴。
+                                
+                             </h4>
+                          </div>
+                      </div>
+
+                      <div class="flex2";class="rwd"; style="margin-top: 2%;">
+                          <div style="width: 48%;">
+                              <div class="leftword;" style="vertical-align: middle; text-align:left;" >   
+                                  <h4 style="padding: 15px;">
+                                    <div style="border-width: 3px; border-style:solid ; 
+                                width: 150px; height: 42px; border-color: rgba(85, 127, 255, 0.421); 
+                                padding: 3px; text-align: center;"> 彩蛋2:</div>
+                                    <br>大眼仔櫃子的深處有多張便利貼，上面寫著「記得要交文件」還貼了3張，但他最後還是忘記了。
+
+                                  </h4>
+                              </div>
+                          </div>
+                          <div style="width: 48%; height: 100%; margin-left: 2%;" >
+                              <img src="sur2.jpg" alt="Avatar" class="right">
+                          </div>
+                      </div>
+
+                      <div class="flex2">
+                        <div style="width: 80%; height: 60%; background-color:red;">
+                            <img src="sur3.jpg" alt="Avatar" class="left">
+                        </div>
+        
+                         <div class="rwd";style="text-align: left; width: 40%; margin-left: 3%;">   
+                            <h4 style="padding: 15px;" class="align-items-center">
+                              <div style="border-width: 3px; border-style:solid ; 
+                                width: 150px; height: 42px; border-color: rgba(85, 127, 255, 0.421); 
+                                padding: 3px; text-align: center;"> 彩蛋3:</div>
+                               <br>
+                               英文字母中的第23個字母是W，第19個是S，而"2319事故"就是White Sock的縮寫。
+                           </h4>
+                        </div>
+                    </div>
+
+                    
+                    <div class="flex2";class="rwd"; style="margin-top: 2%;">
+                      <div style="width: 48%;">
+                          <div class="leftword;" style="vertical-align: middle; text-align:left;" >   
+                              <h4 style="padding: 15px;">
+                                <div style="border-width: 3px; border-style:solid ; 
+                            width: 150px; height: 42px; border-color: rgba(85, 127, 255, 0.421); 
+                            padding: 3px; text-align: center;"> 彩蛋2:</div>
+                                <br>阿布的本名其實叫做瑪麗，阿布只是毛怪暫時替她取的名字。
+
+                              </h4>
+                          </div>
+                      </div>
+                      <div style="width: 48%; height: 100%; margin-left: 2%;" >
+                          <img src="sur4.jpg" alt="Avatar" class="right">
+                      </div>
+                  </div>
+
+                      <div class="flex2">
+                        <div style="width: 80%; height: 60%; background-color:red;">
+                            <img src="sur5.jpg" alt="Avatar" class="left">
+                        </div>
+        
+                         <div class="rwd";style="text-align:l; width: 40%; margin-left: 3%;">   
+                            <h4 style="padding: 15px;" class="align-items-center">
+                              <div style="border-width: 3px; border-style:solid ; 
+                                width: 150px; height: 42px; border-color: rgba(85, 127, 255, 0.421); 
+                                padding: 3px; text-align: center;"> 彩蛋5:</div>
+                               <br>片尾出現了「在這部動畫拍攝的過程中沒有任何怪獸受到傷害」。
+                           </h4>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="award">
+                        <div class="surprise">
+                            <p>
+                            <div class="title2"><h1>獲得獎項</h1></div>  
+                            </p>
+
+                            <h4>第74屆奧斯卡金像獎</h4>
+                            <br>動畫長片獎<span style="color: crimson;">提名</span>
+                           
+                            <br>原創配樂<span style="color: crimson;">提名</span>
+                            
+                            <br>音效剪輯<span style="color: crimson;">提名</span>
+                            <br>原創歌曲獎 「If I didn't have you」<span style="color: crimson;">獲獎</span>
+                         </div>
+                            
+                            
+                           
+
+                        </div>
+                        <br>
+                        <div class="title2"><h1>電影預告</h1></div>
+                    <div class="video">
+                        <iframe class="iframe" src="https://www.youtube.com/embed/LF6X4W_OQr8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        
+                    </div>
+
+                    
+
+                <span style="color:rgb(68, 71, 98);"></span>
+                    <div class="footer"> 
+                        <span style="color:rgb(255, 250, 250)">
+                            <button onclick="topFunction()"
+                                id="myBtn" title="Go to top"><img src="Icon.png" alt="">
+                            </button>
+                        </span>
+                    </div>
+
+
+                    <script>
+                      
+                        myVid = document.getElementById("bgm");
+                        myVid.volume = 0.2;
+                       
+                        var mybutton = document.getElementById("myBtn");
+                        window.onscroll = function () { scrollFunction() };
+                        function scrollFunction() {
+                            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                                mybutton.style.display = "block";
+                            } else {
+                                mybutton.style.display = "block";
+                            }
+                        }
+                        function topFunction() {
+                            document.body.scrollTop = 0;
+                            document.documentElement.scrollTop = 0;
+                        }
+                    </script>
+                    </div>
+</body>
+
+</html>
