@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>瓦力</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script> 
+    <link rel="icon" href="img/Icon.png">
+    <style>
+        * {
+            margin: 0;
+        }
+
+        .box {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .nav {
+            background-color: paleturquoise; 
+            display: flex;
+            top: 0;
+            position: sticky;
+            z-index: 999;
+            padding-bottom: 0px;
+        }
+        
+        .title {
+            padding-top: 1%;
+            width: 94%; 
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .title h1 a{
+            text-decoration: none;
+            font-weight: bold;
+            color:whitesmoke;
+        }
+
+        .title h1 a:visited{
+            color: gray;
+            font-weight: bold;
+        }
+
+        #list {
+            margin: 50% 50% 0%;
+        }
+
+        * .nav ul li ul li {
+            padding-top: 4.9%; 
+            padding-left: 5px;
+            height: 40px;
+            width: 125px;
+        }
+
+        .nav ul {
+            padding-left: 0px;
+            display: inline;
+        }
+
+        .nav ul li {
+            list-style-type: none;
+            position: relative;
+            float: left;
+        }
+
+        .nav ul a {
+            display: block;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .nav ul li ul {
+            position: absolute;
+            visibility: hidden;
+            margin: 0% 50%;
+        }
+
+        .nav ul li:hover ul {
+            visibility: visible;
+        }
+
+        .nav ul li:hover ul li ul {
+            visibility: hidden;
+        }
+
+        .nav ul li ul li ul {
+            position: absolute;
+        }
+
+        .nav ul li ul li:hover ul {
+            margin-top: -30px;
+            margin-left: 120px;
+            visibility: visible;
+        }
+
+        * .nav ul li ul li {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            color: #6f6f6f;
+            font-weight: bold;
+        }
+
+        * .nav ul li ul li:hover {
+            background-color: cornsilk;
+        }
+
+        a {
+            color: #6f6f6f;
+        }
+
+        a:visited {
+            color: #6f6f6f;
+        }
+
+        .nav ul li ul {
+            background-color: #ffffffe8;
+        }
+
+        .header {
+            background-color: white;
+            padding: 10px;
+        }
+
+        .header .music {
+            text-align: right;
+        }
+
+        audio {
+            width: 300px;
+            height: 20px;
+        }
+
+        .picture {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        .plot {
+            background-color: white;
+            height: 50%;
+            font-size: x-large;
+            padding-top: 20px;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-bottom: 50px;
+            margin-left: 50px;
+            margin-right: 50px;
+        }
+
+        .plot h1 {
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .character {
+            padding-top: 20px;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-bottom: 50px;
+            margin-left: 50px;
+            margin-right: 50px;
+        }
+
+        .character h1 {
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .card-text {
+            text-align: center;
+        }
+
+        .card-img-top {
+            cursor: pointer;
+            opacity: 1;
+        }
+
+        .card-img-top:hover {
+            max-width: 100%;
+            opacity: 0.8;
+
+        }
+
+        .flex2 {
+            display: flex;
+            align-items: center;
+            width: 95%;
+            height: 45vw;
+            padding-left: 5%;
+        }
+
+        .left {
+            width: 100%;
+            height: 100%;
+            object-fit: cover
+        }
+
+        .right {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .sentence {
+            padding-bottom: 50px;
+            padding-left: 20px;
+            padding-right: 20px;
+            margin-left: 50px;
+            margin-right: 50px;
+        }
+
+        .sentence h1 {
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .card-deck{
+            width: 80%;
+            margin-left: 10%;
+        }
+
+        .card-deck .card .card-img-top-2{
+            object-fit: cover;
+        }
+
+        .surprise {
+            padding-bottom: 50px;
+            padding-left: 20px;
+            padding-right: 20px;
+            margin-left: 50px;
+            margin-right: 50px;
+        }
+
+        .surprise h1 {
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .prize h1{
+            text-align: center;
+        }
+
+        .award {
+            background-color: white;
+            text-align: center;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .video {
+            position: relative;
+            width: 80%;
+            height: 0;
+            padding-bottom: 45%;
+            margin-left: 10%;
+            margin-bottom: 5%;
+        }
+
+        .iframe {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .trailer h1 {
+            text-align: center;
+            font-weight: bold;
+        }
+
+        #myBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 99;
+            border: none;
+            cursor: pointer;
+            padding: 1px;
+            border-radius: 50%;
+        }
+
+        #myBtn:hover {
+            background-color: grey;
+        }
+
+        .rwd{
+            font-size:large;
+        }
+
+        @media (min-width: 600px) and (max-width: 1200px) {
+        .rwd {
+            font-size: x-large;
+        }
+        }
+        
+        @media (min-width: 1200px) {
+        .rwd {
+            font-size: xx-large;
+        }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box" id="#header">
+        <div class="nav">
+            <ul>
+                <li>
+                    <img id="list" src="img/list.png" alt="" width="30px" height="30px">
+                    <ul>
+                        <li><a href="../index.html">首頁</a></li>
+                        <li><a href="../About/about.html">關於皮克斯</a></li>
+                        <li>
+                            <a href="#">動畫介紹</a> 
+                            <ul>
+                                <li><a href="../monster/monster.html">怪獸電力公司</a></li>
+                                <li><a href="../up/up.html">天外奇蹟</a></li>
+                                <li><a href="../Cars/cars.html">汽車總動員</a></li>
+                                <li><a href="../fin/nemo.html">海底總動員</a></li>
+                                <li><a href="../fin/rat.html">料理鼠王</a></li>
+                                <li><a href="../Toy story/toy.html">玩具總動員</a></li>
+                                <li><a href="../腦筋急轉彎/Inside out.html">腦筋急轉彎</a></li>
+                                <li><a href="#">瓦力</a></li>
+                                <li><a href="../超人特攻隊/The Incredibles.html">超人特攻隊</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="../form.html">問券調查</a></li>
+                    </ul>
+                </li>
+            </ul>
+        <div class="justify-content-center title"><h1 id="title"><a href="../index.html">皮克斯的異想世界</a></h1></div>
+        </div>
+        <div class="header">
+            <div class="music">
+                <audio id="bgm" autoplay="autoplay" src="audio/title.mp3" controls loop></audio>
+            </div>
+        </div>
+        <div class="article">
+            <img src="img/post.jpg" class="picture" alt="">
+            <!-- 劇情大綱 -->
+            <div class="plot">
+                <h1>劇情大綱</h1>
+                <hr>
+                <p class="rwd">
+                    動畫的劇情說明了700年前有一個大賣家集團推行了一項「地球淨化計畫」，人類因此搭乘太空船公理號在星際中漫遊，並留下一台清掃型機器人──瓦力，替他們的居住環境進行修補，
+                    然而，集團的總裁之後發現地球污染的問題根本就無法透過人類行動解決，但得知事情的真相後，他們卻沒有透露任何的訊息，
+                    而是暗地裡持續進行地球淨化的工作。直到有一天，瓦力在清掃的過程中發現了一株小樹苗，正好人類也派遣偵察型機器人──伊芙，來到地球探測是否存在生命跡象，
+                    他們倆的邂逅推進了故事的發展。</p>
+            </div>
+            <!-- 角色 -->
+            <div class="character">
+                <h1>角色介紹</h1>
+                <hr>
+                <div class="row">
+                    <div class="col-md card-group">
+                        <div class="col-md">
+                            <div class="card" style="width: 100%; height: 100%;">
+                            <img src="img/Walle.jpg" class="card-img-top" data-toggle="modal" data-target="#card01" alt="...">
+                            <div class="card-body">
+                                <p class="card-text">瓦力</p>
+                            </div>
+                            </div>
+                            <div class="modal" id="card01" tabindex="-1">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">瓦力</h5>
+                                </div>
+                                <div class="modal-body">
+                                    <p>「地球淨化計畫」中，負責修復環境，遺留下的清掃型機器人。個性單純、勤奮努力。有一天突然有了人類擁有的情感，並開始搜集人類的物品，有一次透過電視節目了解了愛情和情感交流，畢生的理想就是和伊芙牽手。</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                                </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="card" style="width: 100%; height:100%;">
+                            <img src="img/Eve.jpg" class="card-img-top" data-toggle="modal" data-target="#card02" alt="...">
+                            <div class="card-body">
+                                <p class="card-text">伊芙</p>
+                            </div>
+                            </div>
+                            <div class="modal" id="card02" tabindex="-1">
+                                <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h5 class="modal-title">伊芙</h5>
+                                    </div>
+                                    <div class="modal-body">
+                                    <p>降落在地球執行盤查作業的新型高科技探測機器人。外表有如蘋果公司推出的iPod，極具現代感，身手矯健具有戰鬥能力，個性方面具有外剛內柔的女性氣質。</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="card" style="width: 100%; height: 100%;">
+                            <img src="img/Captain.jpg" class="card-img-top" data-toggle="modal" data-target="#card03" alt="...">
+                            <div class="card-body">
+                                <p class="card-text">船長</p>
+                            </div>
+                            </div>
+                            <div class="modal" id="card03" tabindex="-1">
+                                <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h5 class="modal-title">船長</h5>
+                                    </div>
+                                    <div class="modal-body">
+                                    <p>飛船上的唯一指揮官，每天都按部就班反復檢查飛船狀態。得知探測機器人的新發現之後，便一心想擺脫一成不變的乏味生活， 隨即帶領人類踏上新旅程。</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md card-group">
+                        <div class="col-md">
+                            <div class="card" style="width: 100%; height:100%">
+                            <img src="img/Auto.jpg" class="card-img-top" data-toggle="modal" data-target="#card04" alt="...">
+                            <div class="card-body">
+                                <p class="card-text">奧圖</p>
+                            </div>
+                            </div>
+                            <div class="modal" id="card04" tabindex="-1">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                <div class="modal-header">
+                                </div>
+                                <div class="modal-body">
+                                    <p>公理號上的自動飛行儀，已經帶領飛船上的人類在太空中漫遊了700年。奧圖一向小心謹慎，看似執行船長執行的命令，暗中其實不惜任何代價的執行秘密指令。</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                                </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="card" style="width: 100%; height:100%">
+                            <img src="img/M-O.jpg" class="card-img-top" data-toggle="modal" data-target="#card05" alt="...">
+                            <div class="card-body">
+                                <p class="card-text">M-O</p>
+                            </div>
+                            </div>
+                            <div class="modal" id="card05" tabindex="-1">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">M-O</h5>
+                                </div>
+                                <div class="modal-body">
+                                    <p>公理號上負責清掃外來污染物的機器人，非常重視環境清潔。外型小巧，中規中矩認真執行任務，當瓦力登陸公理號之後，M-O便緊追不捨想清除瓦力身上的垃圾殘留物。</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                                </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="card" style="width: 100%; height:100%">
+                            <img src="img/Humans.jpg" class="card-img-top" data-toggle="modal" data-target="#card06" alt="...">
+                            <div class="card-body">
+                                <p class="card-text">約翰 ＆ 瑪莉</p>
+                            </div>
+                            </div>
+                            <div class="modal" id="card06" tabindex="-1">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">約翰 ＆ 瑪莉</h5>
+                                </div>
+                                <div class="modal-body">
+                                    <p>公理號上的人類，兩人原本並不認識對方，在瓦力和伊芙大鬧公理號時意外地對彼此產生了感情。</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                                </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 中心思想 -->
+            <div class="sentence">
+            <hr>
+            <h1>中心思想</h1>
+  
+                <div class="card-deck justify-content-center">
+                    <div class="card">
+                    <img class="card-img-top-2" src="img/Earth.jpg" alt="Card image cap">
+                    <div class="card-body">
+                            <p class="card-text" style="text-align: left;"><small class="text-muted">「假若人類未來必須離開地球，且忘記關閉最後一個機器人呢？」這是《瓦力》的導演安德魯史丹頓（Andrew Stanton）最初的發想。 
+                                表面上呈現的是瓦力與伊芙的相遇造就了一段愛情故事，背後其實埋藏了許多深層的意涵。 整部動畫的中心思想在於「控制」（control）機制。
+                                組織在達成目標的過程之中，一定會遇到各種紛預期的內在或者外在事件，這些變化都可能促使組織無法順利達成目標。
+                                 換言之，控制是一種修正偏誤，使組織能順利完成每一個階段性計畫，並朝向最終目標發展的程序。</small></p>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 彩蛋 -->
+            <div class="surprise">
+            <h1>彩蛋</h1>
+            <hr>
+                <div class="flex2">
+                    <div style="width: 48%; height: 96%;">
+                        <img src="img/surprise01.jpg" alt="Avatar" class="left">
+                    </div>
+
+                    <div style="text-align: left; width: 48%; margin-left: 4%;">   
+                        <h2 style="padding: 15px;" class="align-items-center rwd">
+                            片中瓦力用各種垃圾製作的「伊芙」，其中的一個「手臂」正是皮克斯經典的象徵「頑皮跳跳燈」。
+                        </h2>
+                    </div>
+                </div>
+                <div class="flex2" style="margin-top: 4%;">
+                    <div style="width: 48%;">
+                        <div class="leftword;" style="vertical-align: middle; text-align: left;" >   
+                            <h2 style="padding: 15px;" class="rwd">
+                                《料理鼠王》中的一台紅色偉士牌機車出現在《瓦力》腳下的廢墟中。
+                            </h2>
+                        </div>
+                    </div>
+                    
+                    <div style="width: 48%; height: 100%; margin-left: 4%;" >
+                        <img src="img/surprise02.jpg" alt="Avatar" class="right">
+                    </div>
+                </div>
+                <div class="flex2">
+                    <div style="width: 48%; height: 96%;">
+                        <img src="img/surprise03.jpg" alt="Avatar" class="left">
+                    </div>
+
+                    <div style="text-align: left; width: 48%; margin-left: 4%;">   
+                        <h2 style="padding: 15px;" class="align-items-center rwd">
+                            BNL公司（Buy n Large）是皮克斯電影世界中的虛構公司，在《瓦力》中可以看到他的蹤跡，以及巴斯光年的電池品牌也是來自此公司。
+                        </h2>
+                    </div>
+                </div>
+            </div>
+            <!-- 獎項 -->
+            <div class="prize">
+                <h1>獎項</h1>
+                <hr>
+                <div class="award">
+                    <p>2008年 星雲獎最佳劇本
+                        <br>第81屆 奧斯卡最佳動畫片獎
+                        <br>2008年 金球獎最佳動畫長片
+                        <br>2008年 衛星獎 最佳動畫或混合媒體
+                        <br>2008年 美國監製工會獎 最佳動畫長片</p>
+                </div>
+            </div>
+            <!-- 預告片 -->
+            <div class="trailer">
+                <hr>
+                <h1>預告片</h1>
+                <div class="video"> 
+                    <iframe class="iframe" src="https://www.youtube.com/embed/w99ZfNX6d2I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+            <!-- 頁尾 -->
+            <button onclick="topFunction()" id="myBtn" title="Go to top"><img src="img/Icon48.png" alt=""></button>
+        </div>
+    </div>
+</body>
+<script>
+    // 音量調整
+    myVid=document.getElementById("bgm");
+        myVid.volume=0.2;
+
+    // 置頂
+    var mybutton = document.getElementById("myBtn");
+    window.onscroll = function() {scrollFunction()};
+    function scrollFunction() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        mybutton.style.display = "block";
+      } else {
+        mybutton.style.display = "block";
+      }
+    }
+    function topFunction() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
+</script>

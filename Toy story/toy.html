@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/Icon.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+    <title>玩具總動員</title>
+    <style>
+      .rwd{
+        font-size:large
+      }
+      @media (min-width: 600px) and (max-width: 1200px) {
+        .rwd {
+        font-size: x-large;
+        }
+      }
+      @media (min-width: 1200px) {
+        .rwd {
+          font-size: xx-large;
+        }
+      }
+      *{
+          margin: 0;
+      }
+      .nav{
+          background-color: burlywood;
+          display: flex;
+          top: 0;
+          position: sticky;
+          z-index: 999;
+          padding-bottom: 0px;
+      }
+      .title{
+          padding-top: 1%;
+          width: 96%;
+          text-align: center;
+      }
+      .title h1 a{
+        text-decoration: none;
+        font-weight: bold;
+        color:sienna;
+      }
+      .title h1 a:visited{
+        color: whitesmoke;
+        font-weight: bold;
+      }
+      .music{
+          width: 5%;
+      }
+      #list{
+          margin: 50% 50% 0%;
+      }
+      * .nav ul li ul li{
+          padding-top: 4.9%;
+          padding-left: 5px;
+          height: 40px;
+          width: 125px;
+      }
+      .nav ul{
+          padding-left: 0px;
+          display: inline;
+      }
+      .nav ul li{
+          list-style-type: none;
+          position: relative;
+          float: left;
+      }
+      .nav ul a{
+          display: block;
+          text-decoration: none;
+          font-weight: bold;
+      }
+      .nav ul li ul{
+          position: absolute;
+          visibility: hidden;
+          margin: 0% 50%;
+      }
+      .nav ul li:hover ul{
+          visibility: visible;
+      }
+      .nav ul li:hover ul li ul{
+          visibility: hidden;
+      }
+      .nav ul li ul li ul{
+          position: absolute;
+      }
+      .nav ul li ul li:hover ul{
+          margin-top: -30px;
+          margin-left: 120px;
+          visibility: visible;
+      }
+      * .nav ul li ul li{
+          font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+          color: #6f6f6f;
+          font-weight: bold;
+      }
+      * .nav ul li ul li:hover{
+          background-color: cornsilk;
+      }
+      a{
+          color: #6f6f6f;
+      }
+      a:visited {
+          color: #6f6f6f;
+      }
+      .nav ul li ul{ /*新增li ul，讓list icon背景是nav的顏色，其他list的bg-color保留*/
+          background-color: #ffffffe8;
+      }
+      /*以上為list設定*/
+      
+      
+      .box{
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          margin: 0 auto;
+      }
+      #center{
+        justify-content: center;
+      }
+      .plot {
+          background-color: white;
+          /* width: 100%; */
+          height: 50%;
+          padding-top: 5%;
+          padding-left: 20px;
+          padding-right: 20px;
+          padding-bottom: 5%;
+          margin-left: 50px;
+          margin-right: 50px;
+        }
+
+        .plot h1{
+            text-align: center;
+        }
+        .character{
+            padding-top: 20px;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-bottom: 50px;
+            margin-left: 50px;
+            margin-right: 50px;
+        }
+
+        .character h1{
+            text-align: center;
+        }
+
+        .card-text{
+            text-align: center;
+        }
+        .header{
+            background-color:paleturquoise;
+            padding: 10px;
+        }
+        .container2 {
+            position: relative;
+            width: 33%;
+            margin: 15px;
+        }
+        .character{
+            color: aliceblue;
+            position: absolute;
+            bottom: 0;
+        }
+
+        .picture{
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+        .card1-img-top{
+            opacity: 1;
+            width: 100%;
+            height: 87%;
+            object-fit: cover;
+        }
+        .card1-img-top:hover{
+            max-width: 100%;
+            opacity: 0.8;
+
+        }
+        .margin{
+            margin-bottom: 2%;
+        }
+
+        .flex{
+            display: flex;
+        }
+
+            .image {
+                opacity: 1;
+                display: block;
+                width: 100%;
+                /* 高度可能跟大家不樣 */
+                height: 100%; 
+                object-fit: cover;
+                object-position: top;
+                transition: .5s ease;
+                backface-visibility: hidden;
+                border-radius: 20%;
+                border: rgb(24, 24, 24) 2px solid;
+            }
+            /*trailer*/
+            /*referrrence: https://ithelp.ithome.com.tw/articles/10252882*/
+            .video{
+                position: relative;
+                width: 80%;
+                height: 0;
+                padding-bottom: 45%;
+                margin-left:10%;
+                margin-bottom: 5%;
+            }
+            .iframe{
+                position: absolute;
+                width: 100%;
+                height: 100%;
+            }
+            .middle {
+            transition: .5s ease;
+            opacity: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            text-align: center; 
+            }
+
+            .container2:hover .image {
+            opacity: 0.3;
+            }
+
+            .container2:hover .middle {
+            opacity: 1;
+            }
+            .text {
+            color: white;
+            font-size: 16px;
+            }
+            
+            .sentence{
+              margin: 3%;
+              text-align: center;
+              font-size: x-large;
+            }
+
+            .surprise{
+                text-align: center;
+                margin: 1%;
+                font-size: x-large;
+            }
+            .flex2{
+                display: flex;
+                align-items: center;
+                width: 95%;
+                height: 45vw;
+                padding-left: 5%;
+            }
+            .left{
+                width: 100%;
+                height: 100%;
+                object-fit: cover
+            }
+            .right{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+            .leftword{
+                float: left;
+            }
+            .egg{
+                display: block;
+                width: 47%;
+                margin: 0% 3% 3% 3%;
+            }
+            .award{
+                font-size: x-large;
+                text-align: center;
+                margin-top: 5%;
+            }
+            .header{
+                text-align: right;
+            }
+            audio{
+                width: 300px;
+                height: 20px;
+            }
+            #myBtn {
+                display: none;
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                z-index: 99;
+                border: none;
+                cursor: pointer;
+                padding: 1px;
+                border-radius: 50%;
+            }
+
+            #myBtn:hover {
+                background-color: grey;
+            }
+    </style>
+</head>
+<body>
+    <div class="box" id="header" >
+        <div class="nav">
+            <ul>
+                <li>
+                    <img id="list" src="img/list.png" alt="" width="30px" height="30px">
+                    <ul>
+                        <li><a href="../index.html">首頁</a></li>
+                        <li><a href="../About/about.html">關於皮克斯</a></li>
+                        <li>
+                            <a href="#">動畫介紹</a> 
+                            <ul>
+                                <li><a href="../monster/monster.html">怪獸電力公司</a></li>
+                                <li><a href="../up/up.html">天外奇蹟</a></li>
+                                <li><a href="../Cars/cars.html">汽車總動員</a></li>
+                                <li><a href="../fin/nemo.html">海底總動員</a></li>
+                                <li><a href="../fin/rat.html">料理鼠王</a></li>
+                                <li><a href="#header">玩具總動員</a></li>
+                                <li><a href="../腦筋急轉彎/Inside out.html">腦筋急轉彎</a></li>
+                                <li><a href="../Walle/walle.html">瓦力</a></li>
+                                <li><a href="../超人特攻隊/The Incredibles.html">超人特攻隊</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="../form.html">問卷調查</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="justify-content-center title"><h1 id="title"><a href="../index.html">皮克斯的異想世界</a></h1></a></div> <!--06/19-->
+        </div>
+        <div class="header">
+            <div class="music">
+                <audio id="bgm" autoplay="autoplay" src="BGM/youve-got-a-friend-in-me-from-toy-story-4-audio-only.mp3" controls loop ></audio>
+            </div>
+        </div>
+        <div class="article">
+            <img src="img/post.jpg" class="picture" alt="">
+            <div class="plot">
+              <div id="center"><h3 >劇情大綱</h3></div>
+                <p class="rwd">
+                    原本胡迪是小男孩安迪最喜歡的玩具，但在熱門玩具「巴斯光年」的出現後胡迪逐漸失寵。胡迪打算將巴斯趕走，卻被其他玩具們唾棄；之後他們一起陷入了致命危機，兩人展開了他們的冒險之旅。眼看安迪要搬家了，他們即將失去了安迪；兩人開始了彼此的團隊合作，起努力回到主身邊。
+                </p>
+            </div>
+            
+            <div class="row margin">
+                <div class="col-md card-group">
+                  <div class="col-md">
+                    <div class="card" style="width: 100%; height: 100%;">
+                      <img src="img/andy.jpg" class="card1-img-top" data-toggle="modal" data-target="#card01" alt="...">
+                      <div class="card-body">
+                        <p class="card-text">安迪</p>
+                      </div>
+                    </div>
+                    <div class="modal" id="card01" data-backdrop="static" tabindex="-1">
+                      <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title">安迪</h5>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <p>玩具們的主人。</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md">
+                    <div class="card" style="width: 100%; height: 100%;">
+                      <img src="img/woody.jpg" class="card1-img-top" data-toggle="modal" data-target="#card02" alt="...">
+                      <div class="card-body">
+                        <p class="card-text">胡迪</p>
+                      </div>
+                    </div>
+                    <div class="modal" id="card02" data-backdrop="static" tabindex="-1">
+                        <div class="modal-dialog modal-dialog-centered">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title">胡迪</h5>
+                            </div>
+                            <div class="modal-body">
+                              <p>Andy兒時最喜愛的玩具，玩具們的首領。</p>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                  <div class="col-md">
+                    <div class="card" style="width: 100%; height: 100%;">
+                      <img src="img/buzz.jpg" class="card1-img-top" data-toggle="modal" data-target="#card03" alt="...">
+                      <div class="card-body">
+                        <p class="card-text">巴斯</p>
+                      </div>
+                    </div>
+                    <div class="modal" id="card03" data-backdrop="static" tabindex="-1">
+                        <div class="modal-dialog modal-dialog-centered">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title">巴斯</h5>
+                            </div>
+                            <div class="modal-body">
+                              <p>高科技星際巡邏員玩具。</p>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row margin">
+                <div class="col-md card-group">
+                  <div class="col-md">
+                    <div class="card" style="width: 100%; height: 100%;">
+                      <img src="img/peep.jpg" class="card1-img-top" data-toggle="modal" data-target="#card04" alt="...">
+                      <div class="card-body">
+                        <p class="card-text">寶貝</p>
+                      </div>
+                    </div>
+                    <div class="modal" id="card04" data-backdrop="static" tabindex="-1">
+                      <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title">寶貝</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <p>胡迪的女朋友，個性善良、溫柔，有一群牧羊。</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md">
+                    <div class="card" style="width: 100%; height: 100%;">
+                      <img src="img/dog.jpg" class="card1-img-top" data-toggle="modal" data-target="#card05" alt="...">
+                      <div class="card-body">
+                        <p class="card-text">彈簧狗</p>
+                      </div>
+                  </div>
+                  <div class="modal" id="card05" data-backdrop="static" tabindex="-1">
+                      <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title">彈簧狗</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <p>玩具們的好朋友，總是跟在玩具的身邊；願意為大家付出一切。</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md">
+                    <div class="card" style="width: 100%; height: 100%;">
+                      <img src="img/rex.jpg" class="card1-img-top" data-toggle="modal" data-target="#card06" alt="...">
+                      <div class="card-body">
+                        <p class="card-text">抱抱龍</p>
+                      </div>
+                  </div>
+                  <div class="modal" id="card06" data-backdrop="static" tabindex="-1">
+                      <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title">抱抱龍</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <p>個性自卑、看似可怕的恐龍，喜歡玩電視遊樂器。</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row margin">
+                <div class="col-md card-group">
+                  <div class="col-md">
+                    <div class="card" style="width: 100%; height: 100%;">
+                      <img src="img/potato.jpg" class="card1-img-top" data-toggle="modal" data-target="#card07" alt="...">
+                      <div class="card-body">
+                        <p class="card-text">蛋頭先生</p>
+                      </div>
+                    </div>
+                    <div class="modal" id="card07" data-backdrop="static" tabindex="-1">
+                      <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title">蛋頭先生</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <p>愛說俏皮話、一臉憤世忌俗的玩具；但也有溫柔的一面。</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md">
+                    <div class="card" style="width: 100%; height: 100%;">
+                      <img src="img/soldier.jpg" class="card1-img-top" data-toggle="modal" data-target="#card08" alt="...">
+                      <div class="card-body">
+                        <p class="card-text">士兵</p>
+                      </div>
+                  </div>
+                  <div class="modal" id="card08" data-backdrop="static" tabindex="-1">
+                      <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title">士兵</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <p>隊長好和他的士兵們是戰鬥中最優秀的團隊，他們有鋼鐵般的鬥志及非凡的團隊協作精神。</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md">
+                    <div class="card" style="width: 100%; height: 100%;">
+                      <img src="img/ham.jpg" class="card1-img-top" data-toggle="modal" data-target="#card09" alt="...">
+                      <div class="card-body">
+                        <p class="card-text">火腿</p>
+                      </div>
+                  </div>
+                  <div class="modal" id="card09" data-backdrop="static" tabindex="-1">
+                      <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title">火腿</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <p>小豬造型的存錢桶，對世事無所不知。</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+        
+        <div class="sentence">
+            <h3>經典台詞</h3>
+            <br>
+            <div class="card-deck">
+                <div class="card">
+                  <img class="card-img-top" src="img/cl1.png" alt="Card image cap">
+                  <div class="card-body">
+                        <h5 class="card-title">胡迪：我的靴子裡有蛇</h5>
+                        <p class="card-text">Russell:That might sound boring, 
+                          <br>
+                          but I think the boring stuff is the stuff I remember the most.</p>
+                  </div>
+            </div>
+            <div class="card">
+                  <img class="card-img-top" src="img/cl2.png" alt="Card image cap">
+                  <div class="card-body">
+                       <h5 class="card-title">巴斯光年：飛向宇宙，浩瀚無垠！</h5>
+                       <p class="card-text">Ellie:Thanks for the adventure. 
+                         <br>
+                         Now go out and get a new one!</p>
+                       
+                  </div>
+            </div>
+          </div>
+        </div>
+        <div class="surprise">
+            <h3>彩蛋</h3>
+            <br>
+            
+            <div class="flex2">
+                <div style="width: 48%; height: 96%;">
+                    <img src="../Toy story/Img/egg1.jpg" alt="Avatar" class="left">
+                </div>
+
+                 <div style="text-align: center; width: 48%; margin-left: 4%;">   
+                    <h2 style="padding: 15px;" class="align-items-center rwd">
+                        玩具們與巴斯光年剛碰面時，
+                        <br> 背後牆壁上的時鐘是迪士尼的手錶。
+                   </h2>
+                </div>
+            </div>
+            <div class="flex2" style="margin-top: 4%;">
+                <div style="width: 48%;">
+                    <div class="leftword;" style="vertical-align: middle; text-align: center;">   
+                        <h2 style="padding: 15px;" class="rwd">
+                            安弟搬家時，他們車上播的正是迪士尼電影《獅子王》的歌 
+                            <br> 《Hakuna Matata》。
+                        </h2>
+                    </div>
+                </div>
+                
+                <div style="width: 48%; height: 100%; margin-left: 4%;" >
+                    <img src="img/egg2.jpg" alt="Avatar" class="right">
+                </div>
+            </div>
+          </div>
+        <div class="award">
+            <hr>
+            <h3>獎項</h3>
+            <p>
+              <br>
+              奧斯卡獎提名： 
+              <br>
+              最佳配樂及最佳原創歌曲
+              <br>
+              最後贏得：特別成就獎
+              <br>
+              2005年入選美國<a href="https://zh.wikipedia.org/wiki/國家影片登記表" target="_blank">國家電影登記表</a> 
+            </p>
+        </div>
+        <div class="video">
+            <iframe class="iframe" src="https://www.youtube.com/embed/v-PjgYDrg70" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+    
+    <button onclick="topFunction()" id="myBtn" title="Go to top"><img src="img/Icon48.png" alt=""></button>
+    <script>
+        /*BGM's volume*/
+        myVid=document.getElementById("bgm");
+        myVid.volume=0.2;
+        /*Back To Top*/
+        var mybutton = document.getElementById("myBtn");
+        window.onscroll = function() {scrollFunction()};
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                mybutton.style.display = "block";
+            } else {
+                mybutton.style.display = "block";
+            }
+        }
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
+</body>
+</html>
