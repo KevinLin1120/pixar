@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="shortcut icon" href="img/Icon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>腦筋急轉彎</title>
+    <style>
+            *{
+                margin: 0 ;
+            }
+            .container1{
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                margin: 0 auto;
+            }
+            .container2 {
+                position: relative;
+                width: 33%;
+                margin: 15px;
+            }
+            
+            .header {
+            background-color: white;
+            padding: 10px;
+            }
+
+            .header .music {
+                text-align: right;
+            }
+
+            .plot {
+                background-color: white;
+                height: 50%;
+                font-size: x-large;
+                padding-top: 20px;
+                padding-left: 20px;
+                padding-right: 20px;
+                margin-left: 50px;
+                margin-right: 50px;
+            }
+
+            .plot h1{
+                text-align: center;
+            }
+            .flex{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .picture {
+                width: 100%;
+                height: auto;
+                object-fit: cover;
+            }
+            .image {
+                opacity: 1;
+                display: block;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: top;
+                transition: .5s ease;
+                backface-visibility: hidden;
+            }
+            .video{
+                position: relative;
+                width: 80%;
+                height: 0;
+                padding-bottom: 45%;
+                margin-left:10%;
+                margin-bottom: 5%;
+            }
+            .iframe{
+                position: absolute;
+                width: 100%;
+                height: 100%;
+            }
+            .middle {
+                transition: .5s ease;
+                opacity: 0;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                -ms-transform: translate(-50%, -50%);
+                text-align: center;
+            }
+
+            .container2:hover .image 
+            {
+                opacity: 0.3;
+                filter: blur(2px);
+            }
+
+            .container2:hover .middle {
+                opacity: 1;
+            }
+            .text {
+                color: black;
+                font-size: 16px;
+            }
+            .article{
+                text-align: center;
+                padding: 10px;
+            }
+            .sentence{
+                text-align: center;
+            }
+
+            .surprise{
+                text-align: center;
+            }
+
+            .award{
+                text-align: center;
+            }
+
+            .footer{
+                padding: 10px;
+                text-align: center;
+            }
+            audio{
+                width: 300px;
+                height: 20px;
+            }
+            .nav{
+                background-color: aliceblue;
+                display: flex;
+                top: 0;
+                position: sticky;
+                z-index: 999;
+                padding-bottom: 0px;
+            }
+            .title{
+                padding-top: 1%;
+                width: 94%; 
+                text-align: center;
+            }
+            .title h1 a{
+              text-decoration: none;
+              font-weight: bold;
+            }
+            .title h1 a:visited{
+              color: sienna;
+              font-weight: bold;
+            }
+            #list{
+                margin: 50% 50% 0%;
+               
+            }
+            * .nav ul li ul li{
+                padding-top: 4.9%; 
+                padding-left: 5px;
+                height: 40px;
+                width: 125px;
+            }
+            .nav ul{
+                padding-left: 0px;
+                display: inline;
+            }
+            .nav ul li{
+                list-style-type: none;
+                position: relative;
+                float: left;
+            }
+            .nav ul a{
+                display: block;
+                text-decoration: none;
+                font-weight: bold;
+            }
+            .nav ul li ul{
+                position: absolute;
+                visibility: hidden;
+                margin: 0% 50%;
+            }
+            .nav ul li:hover ul{
+                visibility: visible;
+            }
+            .nav ul li:hover ul li ul{
+                visibility: hidden;
+            }
+            .nav ul li ul li ul{
+                position: absolute;
+            }
+            .nav ul li ul li:hover ul{
+                margin-top: -30px;
+                margin-left: 120px; 
+                visibility: visible;
+            }
+            * .nav ul li ul li{
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                color: #6f6f6f;
+                font-weight: bold;
+            }
+            * .nav ul li ul li:hover{
+                background-color: cornsilk;
+            }
+            a{
+                color: #6f6f6f;
+            }
+            a:visited {
+                color: #6f6f6f;
+            }
+            .nav ul li ul{ 
+                background-color: #ffffffe8;
+            }
+            .flex2{
+                display: flex;
+                align-items: center;
+                width: 95%;
+                height: 45vw;
+                padding-left: 5%;
+            }
+            .left{
+                width: 100%;
+                height: 100%;
+                object-fit: cover
+            }
+            .right{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+            .leftword{
+                float: left;
+            }
+            .overlay {
+                position: absolute;
+                bottom: 0;
+                background: rgba(0, 0, 0, 0.5); 
+                color: #f1f1f1;
+                width: 100%;
+                transition: .5s ease;
+                opacity:1;
+                color: white;
+                font-size: 40px;
+                padding: 20px;
+                text-align: center;
+            }
+            .container:hover .overlay {
+                opacity: 0;
+            }
+            .container3 {
+                position: relative;
+            }
+            #myBtn {
+                display: none;
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                z-index: 99;
+                border: none;
+                cursor: pointer;
+                padding: 1px;
+                border-radius: 50%;
+            }
+
+            #myBtn:hover {
+                background-color: grey;
+            }
+            .card-img-top{
+                opacity: 1;
+                cursor: pointer;
+            }
+
+            .card-img-top:hover{
+                max-width: 100%;
+                opacity: 0.8;
+            }
+            .character{
+                padding-top: 20px;
+                padding-left: 20px;
+                padding-right: 20px;
+                padding-bottom: 50px;
+                margin-left: 50px;
+                margin-right: 50px;
+            }
+
+            .character h1{
+                text-align: center;
+            }
+            .rwd{
+              font-size:large
+            }
+            @media (min-width: 600px) and (max-width: 1200px) {
+              .rwd {
+              font-size: x-large;
+              }
+            }
+            @media (min-width: 1200px) {
+              .rwd {
+                font-size: xx-large;
+              }
+            }
+    </style>
+</head>
+<body>
+    <div class="container1" >
+        <div class="nav">
+            <ul>
+                <li>
+                    <img id="list" src="img/list.png" alt="" width="30px" height="30px">
+                    <ul>
+                        <li><a href="../index.html">首頁</a></li> 
+                        <li><a href="../About/about.html">關於皮克斯</a></li>
+                        <li>
+                            <a href="#">動畫介紹</a> 
+                            <ul>
+                                <li><a href="../monster/monster.html">怪獸電力公司</a></li>
+                                <li><a href="../up/up.html">天外奇蹟</a></li>
+                                <li><a href="../Cars/cars.html">汽車總動員</a></li>
+                                <li><a href="../fin/nemo.html">海底總動員</a></li>
+                                <li><a href="../fin/rat.html">料理鼠王</a></li>
+                                <li><a href="../Toy story/toy.html">玩具總動員</a></li>
+                                <li><a href="Inside out.html">腦筋急轉彎</a></li>
+                                <li><a href="../Walle/walle.html">瓦力</a></li>
+                                <li><a href="../超人特攻隊/The Incredibles.html">超人特攻隊</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="../form.html">問卷調查</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="justify-content-center title"><h1 id="title"><a href="../index.html">皮克斯的異想世界</a></h1></div> <!--大改-->
+        </div>
+        <div class="header">
+            <div class="music">
+                <audio id="bgm" autoplay="autoplay" src="img/Inside Out - Main Theme [FULL SONG].mp3" controls loop ></audio>
+            </div>
+            <div class="picture">
+                    <img src="img/background-04.jfif" alt="個人背景" width="100%" height="auto">
+            </div>
+            <div class="plot">
+                <h1>劇情簡介</h1><hr>
+                <div>
+                    <p class="rwd" style="text-align: center;">
+                      小女孩萊莉11歲前在家鄉明尼蘇達生活，大多時候是快樂的。<br> 
+                      但當爸爸的工作因素，全家搬到舊金山後，<br>
+                      面對新的陌生環境，上學遇到新的人際關係，<br>
+                      她出現了適應的問題，她變得不快樂，與父母也有了摩擦，<br>
+                      連喜歡的曲棍球運動也沒有興趣，<br>
+                      過去在她人格發展的重要記憶也逐漸消失……。
+                  </p>
+                </div>
+                    
+            </div>
+        </div>
+
+        <div class="character">
+            <div>
+                <h1>角色簡介</h1><hr>
+            </div>
+            <div class="row">
+                <div class="col-md card-group">
+                  <div class="col-md">
+                    <div class="card" style="width: 100%; height: 100%;">
+                      <img src="img/Riley.png" class="card-img-top" data-toggle="modal" data-target="#card01" alt="...">
+                      <div class="card-body">
+                        <p class="card-text" style="text-align: center;">萊莉</p>
+                      </div>
+                    </div>
+                    <div class="modal" id="card01" data-backdrop="static" tabindex="-1">
+                      <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title">萊莉（Riley Andersen)</h5>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <p>
+                              一位熱愛冰上曲棍球的少女，<br>
+                              因搬家所帶來的衝擊而情緒失衡
+                            </p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md">
+                    <div class="card" style="width: 100%;">
+                      <img src="img/joy2.png" class="card-img-top" data-toggle="modal" data-target="#card02" alt="...">
+                      <div class="card-body">
+                        <p class="card-text">樂樂</p>
+                      </div>
+                    </div>
+                    <div class="modal" id="card02" data-backdrop="static" tabindex="-1">
+                        <div class="modal-dialog modal-dialog-centered">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title">樂樂（Joy)</h5>
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <p>
+                                萊莉大腦總部內的指揮，致力讓萊莉樂觀面對一切，<br>
+                                大腦總部的核心記憶都是由她造出來的
+                              </p>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                  <div class="col-md">
+                    <div class="card" style="width: 100%;">
+                      <img src="img/sadness.png" class="card-img-top" data-toggle="modal" data-target="#card03" alt="...">
+                      <div class="card-body">
+                        <p class="card-text">憂憂</p>
+                      </div>
+                    </div>
+                    <div class="modal" id="card03" data-backdrop="static" tabindex="-1">
+                        <div class="modal-dialog modal-dialog-centered">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title">憂憂（Sadness）</h5>
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <p>
+                                萊莉大腦總部內的副指揮，為人悲觀，<br>
+                                所有被她碰到的記憶球都會轉為悲傷。
+                              </p>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-md card-group">
+                  <div class="col-md">
+                    <div class="card" style="width: 100%;">
+                      <img src="img/anger2.png" class="card-img-top" data-toggle="modal" data-target="#card04" alt="...">
+                      <div class="card-body">
+                        <p class="card-text">怒怒</p>
+                      </div>
+                    </div>
+                    <div class="modal" id="card04" data-backdrop="static" tabindex="-1">
+                      <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title">怒怒（Anger）</h5>
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <p>
+                              為人暴躁易怒，常為萊莉抱不平，<br>
+                              當遇上令人煩惱的東西時，頭上會噴出火光柱
+                            </p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md">
+                    <div class="card" style="width: 100%;">
+                      <img src="img/disgust.png" class="card-img-top" data-toggle="modal" data-target="#card05" alt="...">
+                      <div class="card-body">
+                        <p class="card-text">厭厭</p>
+                      </div>
+                  </div>
+                  <div class="modal" id="card05" data-backdrop="static" tabindex="-1">
+                      <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title">厭厭(Disgust）</h5>
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <p>
+                              負責使萊莉避開她所感到厭惡的事，<br>
+                              如花椰菜、青椒
+                            </p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md">
+                    <div class="card" style="width: 100%;">
+                      <img src="img/fear.png" class="card-img-top" data-toggle="modal" data-target="#card06" alt="...">
+                      <div class="card-body">
+                        <p class="card-text">驚驚</p>
+                      </div>
+                  </div>
+                  <div class="modal" id="card06" data-backdrop="static" tabindex="-1">
+                      <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title">驚驚(Fear)</h5>
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <p>
+                              為人謹慎小心且膽小，負責替萊莉的日常活動作出風險評估，<br>
+                              會害怕一些較為恐怖的東西
+                            </p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+        </div>
+        <div class="sentence">
+            <h1 style="text-align: center;">名言佳句</h1><hr>
+            <div class="card-deck">
+                <div class="card">
+                  <img src="img/1.jpg" alt="Card image cap">
+                  <div class="card-body">
+                        <h5 class="card-title">
+                          哭泣能讓我緩下來，<br>
+                          更好地感受人生難題的重量。
+                        </h5>
+                        <p class="card-text">
+                          Crying helps me slow down<br>
+                          and obsess over the weight of life's problems
+                        </p>
+                  </div>
+            </div>
+                <div class="card">
+                    <img src="img/2.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                          決定一個人心情的，<br>
+                          不在於環境，而在於心境
+                        </h5>
+                        <p class="card-text">
+                          What determines your emotion<br>
+                          is not what surrounds you on the outside,<br>
+                          but how you feel on the inside.<br>
+                        </p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="img/3.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                          成熟就是，就算發現這世界不如預期，<br>
+                          也能調整自己的心情
+                        </h5>
+                        <p class="card-text">
+                          Being mature is <br>
+                          knowing how to adjust yourself <br>
+                          when you realize the world isn’t quite like <br>
+                          what you’ve expected.<br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="surprise">
+            <h1 style="text-align: center;">彩蛋</h1><hr>
+            <div class="flex2">
+                <div style="width: 48%; height: 96%;">
+                    <img src="img/a.jpg" alt="Avatar" class="left">
+                </div>
+
+                 <div style="text-align: center; width: 48%; margin-left: 4%;">   
+                    <h3 style="padding: 15px;" class="align-items-center rwd">
+                      △ 電影中的撲克牌，<br>
+                      K是萊莉爸爸的圖案<br>
+                      Q是萊莉媽媽的圖像<br>
+                      畫有萊莉(Riley)圖案的撲克牌上，<br>
+                      則寫著＂R＂所有撲克牌背面也都是＂R＂
+                   </h3>
+                </div>
+            </div>
+        </div>
+            
+        <div class="award">
+            <h1 style="text-align: center;">獎項</h1><hr>
+            <h5>2016 奧斯卡金像獎 最佳動畫片</h5>
+            <h5>2016 金球獎 最佳動畫長片</h5>
+            <h5>2016 安妮獎 最佳動畫片</h5>
+            <h5>2016 廣播影評人協會獎 最佳動畫獎</h5>
+            <h5>2016 衛星獎 最佳動畫或混和媒體獎</h5>
+            <h5>2015 紐約影評人協會 最佳動畫片</h5>
+            <h5>2016 全美兒童票選獎 最受歡迎動畫電影獎配音</h5>
+            <h5>2016 MTV電影大獎 最佳虛擬演出</h5>
+            <h5>2016 美國電影學會 年度十大電影</h5>
+        </div>
+        <h1 style="text-align: center;">預告片</h1><hr>
+        <div class="video"> <!--changes-->
+            <iframe class="iframe" src="https://www.youtube.com/embed/seMwpP0yeu4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+
+    <img src="" id="scrollDownButton" style="cursor: pointer; opacity: 0.7; position: fixed; right: 18px; transform: rotate(180deg); bottom: 24px; left: unset; display: none;">
+    <button onclick="topFunction()" id="myBtn" title="Go to top"><img src="img/Icon48.png" alt=""></button>
+    <script>
+    var mybutton = document.getElementById("myBtn");
+    window.onscroll = function() {scrollFunction()};
+    function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        mybutton.style.display = "block";
+    } else {
+        mybutton.style.display = "block";
+    }
+    }
+    function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+    }
+    myVid=document.getElementById("bgm");
+        myVid.volume=0.2;
+    </script>
+</body>
+</html>
